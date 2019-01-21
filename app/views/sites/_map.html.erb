@@ -218,8 +218,8 @@
 
     // Request and handle Hammocks
     $(document).ready(function(){
-        $(".sidebar-form .input-group").after(getStarFilter(5));
-        $(".sidebar-form .input-group").after(getSizeFilter());
+        $(".filter-fieldset").append(getStarFilter(5));
+        $(".filter-fieldset").append(getSizeFilter());
       requestHammocksFromServer();
       // Trigger once to fill sidebar with values
 

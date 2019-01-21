@@ -193,6 +193,11 @@
       height: 100%;
       display: flex;
       flex-direction: column;
+      overflow: visible;
+      .filter-fieldset {
+        box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.28);
+        z-index: 999999;
+      }
 
       .input-group {
         border: 1px solid #d2d6de;
