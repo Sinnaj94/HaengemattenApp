@@ -191,6 +191,8 @@
     .sidebar-form {
       border: none;
       height: 100%;
+      display: flex;
+      flex-direction: column;
 
       .input-group {
         border: 1px solid #d2d6de;
