@@ -86,6 +86,13 @@
         }
       }
 
+      .size {
+        font-style: italic;
+        &:before {
+          content: "Größe: ";
+        }
+      }
+
       &-comments {
         max-height: 100px;
         overflow: scroll;

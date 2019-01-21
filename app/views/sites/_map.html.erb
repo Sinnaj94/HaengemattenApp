@@ -142,9 +142,10 @@
         } else {
             stars.append($("<span> keine</span>"));
         }
+        var size = "<div class='size'>" + feature.get("sizes") + "</div>";
         return "<h2>" + feature.get("name") + "</h2> " +
             "<div class='description'>" +
-            feature.get("description") + "</div>" + stars.html() +
+            feature.get("description") + "</div>" + stars.html() + size +
             "<div class='discoverer'>" + feature.get("user").first + " " + feature.get("user").last + "</div>" +
             "<a href='"+ feature.get('comment_url') +"' id='click_on_detail'>" +
             feature.get("review_count") + " " + comment +
@@ -218,6 +219,7 @@
     // Request and handle Hammocks
     $(document).ready(function(){
         $(".sidebar-form .input-group").append(getStarFilter(5));
+        $(".sidebar-form .input-group").append(getSizeFilter());
       requestHammocksFromServer();
       // Trigger once to fill sidebar with values
 
@@ -281,6 +283,8 @@
         erg = searchQuery(erg, $("#search-input").val());
         // 3. Do the Stars Query
         erg = starsQuery(erg);
+        // 4. Do the Sizes Query
+        erg = sizesQuery(erg);
         updateMap(erg);
         updateSidebar(erg);
     }
@@ -296,15 +300,34 @@
         if(starsquery === undefined) {
             return dataset;
         }
-        var result = dataset.filter(hammock => {
+        return dataset.filter(hammock => {
             console.log(hammock.get("meanrating"));
-            if(starsquery === null) {
-              return hammock.get("meanrating") === null;
+            if (starsquery === null) {
+                return hammock.get("meanrating") === null;
             } else {
-              return hammock.get("meanrating") >= starsquery;
+                return hammock.get("meanrating") >= starsquery;
             }
         });
-        return result;
+    }
+
+    function sizesQuery(dataset) {
+        var sizes = ($("#sizeselector").val());
+        var erg = dataset.filter(hammock => {
+            return compareArrays(sizes, hammock.get("sizes"));
+        });
+        return erg;
+    }
+
+    function compareArrays(array1, array2) {
+        var r = false;
+        array1.forEach(a1 => {
+            array2.forEach(a2 => {
+              if(a1 === a2) {
+                  r = true;
+              }
+            });
+        });
+        return r;
     }
 
     /**
@@ -420,6 +443,17 @@
             select.append($("<option value="+ i + ">Mindestens " + i + " " + post +" </option>"));
         }
         select.on("change", function(e) {
+            doQuery();
+        });
+        return select;
+    }
+
+    function getSizeFilter() {
+        var select = $("<select class='form-control' id='sizeselector' multiple size=3></select>");
+        select.append($('<option value="small" selected>Klein</option>'));
+        select.append($('<option value="medium" selected>Mittel</option>'));
+        select.append($('<option value="large"" selected>Groß</option>'));
+        select.on("change", function() {
             doQuery();
         });
         return select;
