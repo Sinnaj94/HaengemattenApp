@@ -210,20 +210,37 @@
           border-bottom-right-radius: 2px;
           padding: 14px;
           margin: 20px 0;
+          transition: background 200ms ease-in-out, color 200ms ease-in-out, box-shadow 200ms ease-in-out;
+          &:hover {
+            box-shadow: 0 4px 7px #0000003b;
+            background: slategrey;
+            color: white;
+            h2 {
+              margin-left: 4px;
+            }
+            .description {
+              margin-left: 2px;
+            }
+            .stars {
+              margin-left: 2px;
+            }
+
+          }
 
           h2 {
             margin-top: 0;
             font-family: "Playfair Display", serif;
+            transition: margin 200ms ease-in-out;
 
+          }
+          .stars {
+            transition: margin 200ms ease-in-out;
           }
 
           .description {
             font-family: "Playfair Display", serif;
             font-style: italic;
-
-            &:before, &:after {
-              content: '"';
-            }
+            transition: margin 200ms ease-in-out;
           }
 
           .search-link {

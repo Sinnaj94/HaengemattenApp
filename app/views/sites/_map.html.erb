@@ -373,11 +373,12 @@
             var header = $("<h2 class='hammock-header'></h2>");
             var content = $("<div class='description'></div>");
             var author = $("<span></span>");
-            content.text(value.get("description"));
+            var user = value.get("user")["first"] + " "+ value.get("user")["last"]
+            content.text("\"" + value.get("description") + "\" " + "(" + user + ")" + " - " + value.get("sizes"));
             header.text(value.get("name"));
             object.append(header);
             if (value.get("meanrating")) {
-              var stars = $("<div></div>")
+              var stars = $("<div class='stars'></div>")
               for (i = 0; i < 5; i++) {
                   if (i < value.get("meanrating")) {
                       stars.append("<i class='fa fa-star fa-star-positive'>");
@@ -388,11 +389,11 @@
               object.append(stars);
             }
             object.append(content);
-            var button = $("<button class='btn btn-primary search-link hammock-btn' type='button'><i class='fa fa-arrow-right'></i></button>");
-            button.click(function() {
+            //var button = $("<button class='btn btn-primary search-link hammock-btn' type='button'><i class='fa fa-arrow-right'></i></button>");
+            object.click(function() {
                 navigateTo(value.get("geometry"));
             });
-            object.append(button);
+            //object.append(button);
             object.mouseenter(function(eve) {onHoverSearchResult(eve, hoverStyle)});
             object.mouseleave(function(eve) {onHoverSearchResult(eve, iconStyle)});
 
