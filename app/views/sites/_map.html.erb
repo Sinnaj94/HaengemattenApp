@@ -286,8 +286,20 @@
         erg = starsQuery(erg);
         // 4. Do the Sizes Query
         erg = sizesQuery(erg);
-        updateMap(erg);
-        updateSidebar(erg);
+        // Sort!
+        var sorted = erg.sort(function(a, b) {
+            return distanceToMiddle(a) - distanceToMiddle(b)
+        });
+        //console.log(sorted);
+        updateMap(sorted);
+        updateSidebar(sorted);
+    }
+
+    function distanceToMiddle(hammock) {
+        var center = map.getView().getCenter();
+        var lonlat = ol.proj.toLonLat(center);
+        var dist = Math.sqrt(Math.pow(hammock.get("position")["lon"] - lonlat[0], 2) + Math.pow(hammock.get("position")["lat"] - lonlat[1], 2));
+        return dist;
     }
 
     function starsQuery(dataset) {
@@ -340,15 +352,6 @@
             hammock.get("description").toLowerCase().includes(query));
         return result;
     }
-
-    /**
-     * Do the checkbox query
-     * */
-    function checkboxQuery(dataset) {
-
-    }
-
-
 
     function mapQuery(dataset) {
         var result = dataset.filter(hammock =>
