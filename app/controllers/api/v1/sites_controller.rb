@@ -21,6 +21,10 @@ class Api::V1::SitesController < Api::V1::BaseController
   end
 
   def format_site(site)
+    images = []
+    site.images.each do |image|
+		  images.push(image_tag image.variant(resize: "100x100"))
+    end
     attribute = {
         name: site.name,
         id: site.id,
@@ -38,6 +42,7 @@ class Api::V1::SitesController < Api::V1::BaseController
         comment_url: "#{api_v1_reviews_path()}?sites_id=#{site.id}",
 		    meanrating: site.meanrating,
         sizes: format_sizes(site.sizes),
+        images: images
     }
     if site.user == current_user
       attribute.merge!(delete: site_path(site),#link_to 'delete', site, method: :delete, data: { confirm: 'Are you sure?' },

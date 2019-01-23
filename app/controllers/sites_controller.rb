@@ -12,7 +12,7 @@ class SitesController < ApplicationController
     #@sites = Site.includes([:reviews,:sizes]).in_bounds(bounds)
 	  #@sites.sort_by{|s| s.distance_to(@somewhere)}
 	  @sites = Site.joins(:sizes).includes([:sizes, :reviews])
-	  
+	  @review = Review.new
   end
 
   # GET /sites/1
