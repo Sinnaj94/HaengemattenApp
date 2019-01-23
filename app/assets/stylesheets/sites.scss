@@ -82,3 +82,6 @@
 		}
 	}
 }
+
+// place main content to the left (will be overwritten in layout for sites.html)
+.content-wrapper, .main-footer { margin-left: 0px; }
