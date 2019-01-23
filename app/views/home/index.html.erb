@@ -11,8 +11,14 @@
       background: #271F30;
       border: 1px solid black;
       color: white;
+      margin-left: 0;
     }
 </style>
+<script>
+  $(document).ready(function () {
+      $(window).trigger('resize');
+  })
+</script>
 <div class="main-page">
   <p id="notice"><%= notice %></p>
   <img class="crazy-hammock" src="<%= asset_path "hammock.svg" %> " style="width: 200px;">
