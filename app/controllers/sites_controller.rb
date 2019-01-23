@@ -89,11 +89,16 @@ class SitesController < ApplicationController
   # DELETE /sites/1
   # DELETE /sites/1.json
   def destroy
+    success = {
+        success: true,
+        id: @site.id
+    }
     @site.destroy
+
     respond_to do |format|
 	  format.js
       format.html { redirect_to sites_url, notice: 'Site was successfully destroyed.' }
-      format.json { head :no_content }
+      format.json { render :json => success}
     end
   end
 	
