@@ -218,6 +218,7 @@
     // Request and handle Hammocks
     $(document).ready(function(){
 		// geoFindMe();
+
         $(".filter-fieldset").append(getStarFilter(5));
         $(".filter-fieldset").append(getSizeFilter());
       requestHammocksFromServer();
@@ -469,13 +470,15 @@
 
 	  function success(position) {
 		var output = [position.coords.longitude, position.coords.latitude]
-		//drawMap(output);
+		//drawMap(output);		// Todo: update Map with center = output
+		//navigateTo(point);
 	  };
 
 	  function error() {
 		// London coordinates
 		var output = [ -0.076132, 51.508530 ];
-		//drawMap(output);
+		//drawMap(output);		// Todo: Todo: update Map with center = output -> use navigateTo(point)?
+		//navigateTo(point); 
 	  };
 
 	  navigator.geolocation.getCurrentPosition(success, error);
