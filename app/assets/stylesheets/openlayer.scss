@@ -15,7 +15,12 @@
       margin-left: 0;
     }
   }
-
+  .ol-zoom {
+		right: 30px;
+		left: auto;
+		top: auto;
+		bottom: 30px;
+	}
   .ol {
     &-popup {
       position: absolute;
