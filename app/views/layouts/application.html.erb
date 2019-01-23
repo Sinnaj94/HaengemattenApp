@@ -6,12 +6,12 @@
     <%= csp_meta_tag %>
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track'=> 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track'=> 'reload' %>
-	  <%= stylesheet_link_tag href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" %>
     <link href="https://fonts.googleapis.com/css?family=Playfair+Display:400,400i,900" rel="stylesheet">
   </head>
   <body class="fixed skin-green-light">
     <div class="wrapper">
-        <%= render 'layouts/navigation/layout'%>
+        <%= render 'layouts/navigation/header'%>
+		<%#= render 'layouts/navigation/sidebar'%>
         <div class="content-wrapper">
             <%= yield %>
         </div>

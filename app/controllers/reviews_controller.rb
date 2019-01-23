@@ -25,6 +25,7 @@ class ReviewsController < ApplicationController
   # GET /reviews/new
   def new
     @review = Review.new
+	@review.site_id = params[:site_id]
   end
 
   # GET /reviews/1/edit
@@ -36,6 +37,11 @@ class ReviewsController < ApplicationController
   def create
     @review = Review.new(review_params)
 	@review.user_id = current_user.id
+	
+	# used for partials rendering in SPA
+	@site = Site.find(@review.site_id)
+	@sites = Site.all
+	@reviews = Review.where(site_id: @site.id).order("created_at DESC")
 
     respond_to do |format|
       if @review.save
@@ -69,6 +75,7 @@ class ReviewsController < ApplicationController
   def destroy
     @review.destroy
     respond_to do |format|
+	  format.js
       format.html { redirect_to reviews_url, notice: 'Review was successfully destroyed.' }
       format.json { head :no_content }
     end
