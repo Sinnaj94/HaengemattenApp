@@ -1,16 +1,27 @@
-<p id="notice"><%= notice %></p>
+<style>
+  .content-wrapper {
+    margin-left: 0;
+    background: #271F30;
+    color: white;
+    text-align: center;
+    padding-left: 0;
+  }
+</style>
+<div class="main-page">
+  <p id="notice"><%= notice %></p>
+  <img src="<%= asset_path "hammock.svg" %> " style="width: 200px;">
 
-<h1>Home</h1>
+  <h1>Hammockapp</h1>
+  <p>Hey<%if current_user %> <%=current_user.first_name%><%end %>! Willkommen bei der HammockApp!</p>
+  <p>Du kannst direkt auf die <%= link_to 'Karte zugreifen', controller: 'sites' %> oder ein bisschen in den  <%= link_to 'Reviews stöbern', controller: 'reviews' %>.</p>
 
-<% if current_user %>
-  Logged in as <a href="mailto:<%= current_user.email %>"><%= current_user.first_name %> <%= current_user.last_name %></a>.<br />
-  <%= link_to 'Liste der Hängematten', controller: 'sites' %><br />
-  <%= link_to 'Liste der Reviews', controller: 'reviews' %><br />
-  <%= link_to 'Liste der User', controller: 'users' %><br />
-  <%= link_to "Log Out", logout_path %>
-<% else %>
-  <%= link_to 'Liste der Hängematten', controller: 'sites' %><br />
-  <%= link_to 'Liste der Reviews', controller: 'reviews' %><br />
-  <%= link_to "Sign Up", signup_path %> or
-  <%= link_to "Log In", login_path %>
-<% end %>
+
+  <h3>Was würdest du gerne tun?</h3>
+  <% if current_user %>
+    <%= link_to "Log Out", logout_path, class: "btn btn-primary"%>
+  <%else %>
+    <%= link_to "Sign Up", signup_path , class: "btn btn-primary"%>
+    <%= link_to "Log In", login_path , class: "btn btn-primary"%>
+  <% end %>
+  <%= link_to "Karte anschauen", {controller: 'sites'}, class: "btn btn-primary"%>
+</div>
