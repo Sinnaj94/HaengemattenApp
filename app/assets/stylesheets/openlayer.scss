@@ -187,8 +187,8 @@
 .skin-green-light {
   .main-sidebar {
     height: 100%;
-    padding-bottom: 60px;
-
+    padding-bottom: 30px;
+	
     .sidebar {
       height: 100%;
     }
@@ -210,7 +210,8 @@
       .sidebar-menu {
         height: 100%;
         overflow: scroll;
-		padding-top: 30px;
+		margin-top: 30px;
+        padding-bottom: 20px;
         .search-entry {
           cursor: pointer;
           background: white;
@@ -218,7 +219,7 @@
           border-top-right-radius: 2px;
           border-bottom-right-radius: 2px;
           padding: 14px;
-          margin: 20px 0;
+          margin: 0 0 20px;
           transition: background 200ms ease-in-out, color 200ms ease-in-out, box-shadow 200ms ease-in-out;
           &:hover {
             box-shadow: 0 4px 7px #0000003b;
