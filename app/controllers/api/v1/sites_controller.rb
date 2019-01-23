@@ -24,7 +24,7 @@ class Api::V1::SitesController < Api::V1::BaseController
     images = []
     if site.images.attached?
       site.images.each do |image|
-        images.push(url_for(image.variant(resize: "100x100")))
+        images.push(url_for(image.variant(resize: "200x200")))
       end
     end
     attribute = {
