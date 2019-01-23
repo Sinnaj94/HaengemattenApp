@@ -275,7 +275,11 @@
     // Request and handle Hammocks
     $(document).ready(function(){
 		// geoFindMe();
-
+        var check = $("<label><input type=checkbox style='height: auto' id='query-outer-areas'> Nur sichtbare Marker</label>");
+        check.on("change", function() {
+            doQuery();
+        })
+        $(".filter-fieldset").append(check);
         $(".filter-fieldset").append(getStarFilter(5));
         $(".filter-fieldset").append(getSizeFilter());
       requestHammocksFromServer();
@@ -335,7 +339,10 @@
      * **/
     function doQuery() {
         // 1: Query the map Position
-        erg = mapQuery(hammocks);
+        var erg = hammocks;
+        if($('#query-outer-areas').is(":checked")) {
+            erg = mapQuery(erg);
+        }
         // 2. Do the Search Query
         erg = searchQuery(erg, $("#search-input").val());
         // 3. Do the Stars Query
