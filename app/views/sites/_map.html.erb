@@ -165,7 +165,7 @@
         f.append($("<a href='"+ feature.get('comment_url') +"' id='click_on_detail'>" + feature.get("review_count") + " " + comment + "</a>"));
         f.append($("<div id='popup-comments' class='ol-popup-comments'></div>"));
         f.append($("<a href='#' onclick='createCommentForm("+ feature.get("id") +")'>Kommentar verfassen</a>"));
-        f.append($("<form class='comment-container'></form>"));
+        f.append($("<div class='comment-container'></div>"));
         if(isMine) {
             f.append($("<a class='btn btn-primary btn-block hammock-btn' href='"+ feature.get("edit") +"'>Bearbeiten</a>"));
             f.append($("<button class='btn btn-danger btn-block' onClick=ajaxDelete('"+ feature.get("delete") +"')>Löschen</button>"));
