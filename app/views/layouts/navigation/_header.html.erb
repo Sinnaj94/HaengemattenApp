@@ -14,16 +14,17 @@
           <li class="dropdown user user-menu">
 		   <% if current_user %>
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              <img alt="User Image" class="user-image" src="http://placehold.it/160x160" />
+              <%= image_tag "User_with_smile-160.png", class:"user-image" %>
               <span class="hidden-xs"><%= current_user.first_name %> <%= current_user.last_name %></span>
             </a>
             <ul class="dropdown-menu">
               <!-- User image -->
               <li class="user-header">
-                <img class="img-circle" alt="User Image" src="http://placehold.it/160x160" />
+				<%= image_tag "User_with_smile-160.png", class:"img-circle" %>
                 <p>
-                  <%= current_user.first_name %> <%= current_user.last_name %> - Hammock Lover
-                  <small>Member since <%= current_user.created_at %></small>
+                  <%= current_user.first_name %> <%= current_user.last_name %><br />
+				  <% if current_user.admin %>Admin<% else %>Hammock Lover<% end %>
+                  <small>Member since <%= current_user.created_at.to_s(:german_date) %></small>
                 </p>
               </li>
               <!-- Menu Footer-->
