@@ -246,11 +246,26 @@
         $.ajax({
             url: link + ".json",
             method: "DELETE"
-        }).done(function() {
-            requestHammocksFromServer();
+        }).done(function(data) {
+            if(data["success"]) {
+                removeHammockById(data['id']);
+                doQuery();
+                overlay.setPosition(undefined);
+                closer.blur();
+            }
+            /*requestHammocksFromServer();
             overlay.setPosition(undefined);
-            closer.blur();
+            closer.blur();*/
         })
+    }
+
+    function removeHammockById(id) {
+        for(var i = 0; i < hammocks.length; i++) {
+            if(hammocks[i].get("id") === id) {
+                hammocks.splice(i, 1);
+                break;
+            }
+        }
     }
 
     // Request and handle Hammocks
