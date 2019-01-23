@@ -1,15 +1,21 @@
 <style>
-  .content-wrapper {
-    margin-left: 0;
-    background: #271F30;
-    color: white;
-    text-align: center;
-    padding-left: 0;
-  }
+    .content-wrapper {
+      margin-left: 0;
+      background: #271F30;
+      color: white;
+      text-align: center;
+      padding-left: 0;
+    }
+
+    .main-footer {
+      background: #271F30;
+      border: 1px solid black;
+      color: white;
+    }
 </style>
 <div class="main-page">
   <p id="notice"><%= notice %></p>
-  <img src="<%= asset_path "hammock.svg" %> " style="width: 200px;">
+  <img class="crazy-hammock" src="<%= asset_path "hammock.svg" %> " style="width: 200px;">
 
   <h1>Hammockapp</h1>
   <p>Hey<%if current_user %> <%=current_user.first_name%><%end %>! Willkommen bei der HammockApp!</p>

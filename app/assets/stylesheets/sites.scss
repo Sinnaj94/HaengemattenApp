@@ -37,10 +37,23 @@
 // Home screen
 .content-wrapper {
   .main-page {
+
+    .crazy-hammock {
+      transition: transform 400ms;
+      &:hover {
+        //transform: scale(1.1);
+        transform: scale(1.1);
+      }
+    }
+
     h1 {
       font-family: "Rubik Mono One", serif;
       background: #C8AD55;
       padding: 20px;
+      transition: background 200ms;
+      &:hover {
+        background: #e5c860;
+      }
     }
     h2 {
     }
