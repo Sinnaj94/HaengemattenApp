@@ -1,3 +1,4 @@
+@import "colors";
 .fa-star {
   &-positive {
     color: #fada5e;
@@ -94,13 +95,13 @@
       }
 
       &-comments {
-        max-height: 100px;
+        max-height: 0;
         overflow: scroll;
-        transition: height 500ms ease-in-out, opacity 500ms ease-in-out;
-        height: 0;
+        transition: max-height 500ms, opacity 500ms;
+        height: auto;
         opacity: 0;
         &.active {
-          height: 100px;
+          max-height: 200px;
           opacity: 1;
         }
         &-single {
@@ -109,10 +110,8 @@
 
           &-stars {
             display: inline-block;
-            background: #8a8a8a;
             padding: 4px;
             margin-top: 4px;
-            border-radius: 8px;
           }
         }
       }
@@ -139,12 +138,15 @@
       }
 
       .comment-container {
-        height: 0;
+        height: auto;
         overflow: hidden;
-        transition: height 500ms ease-in-out;
+        max-height: 0;
+        opacity: 0;
+        transition: max-height 500ms, opacity 500ms;
         &.active {
           overflow: scroll;
-          height: 100px;
+          opacity: 1;
+          max-height: 200px;
         }
       }
     }
@@ -220,9 +222,9 @@
           transition: background 200ms ease-in-out, color 200ms ease-in-out, box-shadow 200ms ease-in-out;
           &:hover {
             box-shadow: 0 4px 7px #0000003b;
-            background: slategrey;
-            color: white;
+            background: $color-light;
             h2 {
+              color: black;
               margin-left: 4px;
             }
             .description {

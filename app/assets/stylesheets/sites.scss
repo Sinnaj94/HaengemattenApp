@@ -3,6 +3,7 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 //sidebar with scrolling
+@import 'colors';
 .skin-green-light {
 	.main-sidebar {
 		box-shadow: 0px 1px 4px rgba(0,0,0,0.3);
@@ -17,6 +18,20 @@
 			}
 		}
 	}
+    .main-header {
+        .logo {
+            background: $color-main;
+            &:hover {
+              background: $color-main;
+            }
+        }
+        .navbar {
+            background: $color-main;
+        }
+        li.user-header {
+            background: $color-main;
+        }
+    }
 }
 
 // toggle button for sidebar  
