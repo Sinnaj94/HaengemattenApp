@@ -1,4 +1,5 @@
 class Api::V1::SitesController < Api::V1::BaseController
+  load_and_authorize_resource
   before_action only: [:show, :edit, :update, :destroy]
   # todo: put into serializer
   def index
@@ -39,7 +40,7 @@ class Api::V1::SitesController < Api::V1::BaseController
         sizes: format_sizes(site.sizes),
     }
     if site.user == current_user
-      attribute.merge!(delete: 'TODO',#link_to 'delete', site, method: :delete, data: { confirm: 'Are you sure?' },
+      attribute.merge!(delete: site_path(site),#link_to 'delete', site, method: :delete, data: { confirm: 'Are you sure?' },
                        edit: edit_site_path(site))
     end
     attribute

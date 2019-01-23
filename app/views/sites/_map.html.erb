@@ -126,7 +126,7 @@
         var postfix = "";
         if(isMine) {
             postfix = "<a class='btn btn-primary btn-block hammock-btn' href='"+ feature.get("edit") +"'>Bearbeiten</a>" +
-                "<a class='btn btn-danger btn-block' href='"+ feature.get("delete") +"'>Löschen</a>"
+                "<button class='btn btn-danger btn-block' onClick=ajaxDelete('"+ feature.get("delete") +"')>Löschen</button>"
         }
         var stars = $("<div><span>Durchschnittsbewertung: </span></div>");
         if(feature.get("meanrating")) {
@@ -213,6 +213,17 @@
         overlay.setPosition(coordinate);
         $("#popup").hide();
         $("#popup").fadeIn();
+    }
+
+    function ajaxDelete(link) {
+        $.ajax({
+            url: link + ".json",
+            method: "DELETE"
+        }).done(function() {
+            requestHammocksFromServer();
+            overlay.setPosition(undefined);
+            closer.blur();
+        })
     }
 
     // Request and handle Hammocks
