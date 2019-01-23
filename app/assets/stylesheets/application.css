@@ -1,5 +1,16 @@
 /*
  *
- *= require_tree .
  *= require_self
+ *= require scaffolds
+ *= require AdminLTE
+ *= require skins/skin-green-light
+ *= require direct_uploads
+ *= require ol
+ *= require sites
+ *
+ * bootstrap must come at the end
+ *= require style
+ *
+ * in case we forgot something (styles here may be overwritten by bootstrap, so better include them before)
+ *= require_tree .
 */

@@ -11,11 +11,13 @@
 // about supported directives.
 //
 //= require jquery3
-//= require jquery_ujs 
-//= require bootstrap-sprockets
 //= require rails-ujs
+//= require bootstrap-sprockets
 //= require activestorage
 //= require turbolinks
+//= require_self
+//
+// fallback (not possible, if we have a second manifest)
 //= require_tree .
 
 $(document).ajaxError(function(event,xhr,options,exc) {

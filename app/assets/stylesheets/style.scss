@@ -1,7 +1,6 @@
+// import bootstrap styles
+
 @import "bootstrap-sprockets";
 @import "bootstrap";
-
-@import "AdminLTE";
-@import "skins/skin-green-light";
-@import "openlayer";
-@import "ol.css";
+@import "font-awesome-sprockets";
+@import "font-awesome";
