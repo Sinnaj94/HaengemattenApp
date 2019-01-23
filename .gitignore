@@ -36,3 +36,4 @@
 
 # Ruby error reports
 ruby.exe.stackdump
+.env
