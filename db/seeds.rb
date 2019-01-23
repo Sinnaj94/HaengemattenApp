@@ -26,7 +26,7 @@ site5 = Site.create(name: 'Garten', description: 'zuhause ist es am Schönsten',
 site6 = Site.create(name: 'Wuhlheide', description: 'im Sommer gibt es manchmal Live-Konzerte in der Kindl-Bühne gleich nebenan', latitude: '52.463587', longitude: '13.547146', user_id: max.id)
 site7 = Site.create(name: 'unterm Fernsehturm', description: '', latitude: '52.519838', longitude: '13.408590', user_id: hank.id)
 site8 = Site.create(name: 'Etosha 1', description: 'near Halali - good for spotting elephants', latitude: '-19.045351', longitude: '16.465364', user_id: hakuna.id)
-site9 = Site.create(name: 'Tivoli', description: 'hier ist immer was los', latitude: '52.459328', longitude: '13.536597', user_id: hakuna.id)
+site9 = Site.create(name: 'Tivoli', description: 'hier ist immer was los', latitude: '55.673833', longitude: '12.567627', user_id: hakuna.id)
 site10 = Site.create(name: 'St. Lucia Beach', description: 'like Paradise', latitude: '-27.897552', longitude: '32.588765', user_id: hakuna.id)
 site1.sizes << [sizem, sizel]
 site2.sizes << [sizes]
