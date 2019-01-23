@@ -21,17 +21,16 @@
 	}
 }
 
-
 // toggle button for sidebar  
 .sidebar-toggle-div {
-	position: absolute; 
-	top: 60px; 
-	margin-left: -12px; 
-	z-index: 801;
+	//z-index: 801;
+	position: relative;
+	left: 400px;
+	top: -100%;
 	
 	.sidebar-toggle {
-		width: 45px; 
-		height: 45px; 
+		width: 35px; 
+		height: 35px; 
 		background-color: white; 
 		cursor: pointer; 
 		box-shadow: 0px 1px 4px 0px rgba(0,0,0,0.3);

@@ -1,0 +1,21 @@
+<% content_for :sidebar do %>
+<div class="main-sidebar">
+  <div class="sidebar">
+    <form class="sidebar-form">
+      <div class="input-group">
+        <fieldset class="filter-fieldset">
+          <input class="form-control" placeholder="Search..." type="text" id="search-input" autocomplete="off"/>
+        </fieldset>
+      </div>
+      <ul class="sidebar-menu" id="search-results"></ul>
+    </form>
+  </div>
+  <div class="sidebar-toggle-div">
+	<!-- Sidebar toggle button-->
+	<button class="sidebar-toggle" data-toggle="push-menu" aria-menu="seitliche Leiste aus- und einblenden">
+	  <i class="fa fa-caret-left"></i> <i class="fa fa-caret-right"></i>
+	</button>
+  </div>
+</div>
+<% end %>
+<%= render template: "layouts/application" %>
