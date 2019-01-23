@@ -156,8 +156,12 @@
         f.append($("<h2>" + feature.get("name") + "</h2> "));
         f.append($("<div class='description'>" + feature.get("description") + "</div>"));
         f.append($("<div class='discoverer'>" + feature.get("user").first + " " + feature.get("user").last + "</div>"));
+        feature.get("images").forEach(image => {
+            f.append($("<img class='image' src=" + image + ">"));
+        });
         f.append($("<div class='size'>" + feature.get("sizes") + "</div>"));
         f.append(stars);
+
         f.append($("<a href='"+ feature.get('comment_url') +"' id='click_on_detail'>" + feature.get("review_count") + " " + comment + "</a>"));
         f.append($("<div id='popup-comments' class='ol-popup-comments'></div>"));
         f.append($("<a href='#' onclick='createCommentForm()'>Kommentar verfassen</a>"));

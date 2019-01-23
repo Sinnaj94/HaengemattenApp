@@ -30,6 +30,14 @@
       min-width: 340px;
       text-align: center;
 
+      .image {
+        display: block;
+        box-shadow: 0 0 3px black;
+        border: 3px solid white;
+        border-radius: 3px;
+        margin: 10px auto;
+      }
+
       &.marker {
         bottom: 62px;
       }
