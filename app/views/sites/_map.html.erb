@@ -1,6 +1,6 @@
 <script type="text/javascript">
     var container = document.getElementById('popup');
-    var content = document.getElementById('popup-content');
+    var content = $('#popup-content');
     var closer = document.getElementById('popup-closer');
     var hammocks = [];
     var map;
@@ -98,6 +98,7 @@
             });
             updateMap(hammocks);
             updateSidebar(hammocks);
+            doQuery();
         });
     }
 
@@ -111,23 +112,34 @@
      * */
     // Empty slot, gives a new form
     function emptySlot(position) {
-        var form = document.getElementById("new_site").outerHTML;
-        return "<code>" + ol.coordinate.toStringHDMS(position) + "</code>" + "<p>Hier ist noch keine Hängematte abgespeichert worden!</p>" + form;
+        var form = $("#new_site");
+        console.log(form);
+        form.on("submit", function(e) {
+            e.preventDefault();
+            var form = $(this);
+            var url = form.attr('action');
+            $.ajax({
+                url: url,
+                method: "POST",
+                data: form.serialize(),
+            });
+        });
+        var ret = $("<div></div>");
+        ret.append($("<code>" + ol.coordinate.toStringHDMS(position) + "</code>"));
+        ret.append(form);
+        return ret;
     }
 
     // Converts the point to html
     function featureToHTML(feature) {
-        // console.log("feature", feature);
+        // Basic form
+        var f = $("<div></div>");
         var comment = "Kommentare";
         if(feature.get("review_count") === 1) {
             comment = "Kommentar";
         }
         var isMine = feature.get("belongs_to_user");
-        var postfix = "";
-        if(isMine) {
-            postfix = "<a class='btn btn-primary btn-block hammock-btn' href='"+ feature.get("edit") +"'>Bearbeiten</a>" +
-                "<button class='btn btn-danger btn-block' onClick=ajaxDelete('"+ feature.get("delete") +"')>Löschen</button>"
-        }
+
         var stars = $("<div><span>Durchschnittsbewertung: </span></div>");
         if(feature.get("meanrating")) {
             var rating = feature.get("meanrating");
@@ -141,7 +153,22 @@
         } else {
             stars.append($("<span> keine</span>"));
         }
-        var size = "<div class='size'>" + feature.get("sizes") + "</div>";
+        f.append($("<h2>" + feature.get("name") + "</h2> "));
+        f.append($("<div class='description'>" + feature.get("description") + "</div>"));
+        f.append($("<div class='discoverer'>" + feature.get("user").first + " " + feature.get("user").last + "</div>"));
+        f.append($("<div class='size'>" + feature.get("sizes") + "</div>"));
+        f.append(stars);
+        f.append($("<a href='"+ feature.get('comment_url') +"' id='click_on_detail'>" + feature.get("review_count") + " " + comment + "</a>"));
+        f.append($("<div id='popup-comments' class='ol-popup-comments'></div>"));
+        f.append($("<a href='#' onclick='createCommentForm()'>Kommentar verfassen</a>"));
+        f.append($("<form class='comment-container'></form>"));
+        if(isMine) {
+            f.append($("<a class='btn btn-primary btn-block hammock-btn' href='"+ feature.get("edit") +"'>Bearbeiten</a>"));
+            f.append($("<button class='btn btn-danger btn-block' onClick=ajaxDelete('"+ feature.get("delete") +"')>Löschen</button>"));
+        }
+
+        return f;
+        /*var size =
         return "<h2>" + feature.get("name") + "</h2> " +
             "<div class='description'>" +
             feature.get("description") + "</div>" + stars.html() + size +
@@ -149,14 +176,14 @@
             "<a href='"+ feature.get('comment_url') +"' id='click_on_detail'>" +
             feature.get("review_count") + " " + comment +
             "</a>" + postfix + "<div id='popup-comments' class='ol-popup-comments'></div>" +
-            "<a href='#' onclick='createCommentForm()'>Kommentar verfassen</a>" + "<form class='comment-container'></form>";
+            "<a href='#' onclick='createCommentForm()'>Kommentar verfassen</a>" + ;*/
     }
 
 
     function onFeatureClick(feature) {
         coordinate = feature.get("geometry").flatCoordinates;
         $(container).addClass("marker");
-        content.innerHTML = featureToHTML(feature);
+        content.html(featureToHTML(feature));
         $("#click_on_detail").on("click", function (e) {
             e.preventDefault();
             $.ajax({
@@ -206,7 +233,7 @@
         } else {
             $(container).removeClass("marker");
             var lonLat = ol.proj.toLonLat(coordinate);
-            content.innerHTML = emptySlot(lonLat);
+            content.html(emptySlot(lonLat));
             document.getElementById("site_longitude").value = lonLat[0];
             document.getElementById("site_latitude").value = lonLat[1];
         }
