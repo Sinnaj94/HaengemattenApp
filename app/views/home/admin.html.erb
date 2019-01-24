@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Administrate</h1>
+
+<% if current_user %>
+	<h3>User Profile</3>
+	<p>
+	<%= link_to 'Edit credentials', edit_user_path(current_user), class: "btn btn-default" if can? :update, current_user %>
+	<%#= render 'users/form', user: current_user %>
+	</p>
+	
+	<% if current_user.admin %>
+	<h3>Admin Page </h3>
+	<p>
+		<% if can? :manage, Size %>
+			<%= link_to "Manage Sizes", sizes_path, class: "btn btn-default" %>
+			<%#= render @sizes %>
+		<% end %>
+		<%= link_to 'New User', new_user_path, class: 'btn btn-default' if can? :create, User %>
+	</p>
+	<% end %>
+<% else %>
+	You are not logged in. Please go to <%= link_to "Log In", login_path %>.
+<% end %>

@@ -32,11 +32,11 @@
                 <div class="pull-left">
                   <%= link_to "Profile", home_index_path, class: "btn btn-default" %>
                 </div>
-                <% if can? :manage, Size %>
-                  <div class="pull-left">
-                    <%= link_to "Sizes", sizes_path, class: "btn btn-default" %>
-                  </div>
-                <% end %>
+				<% if current_user.admin %>
+					<div class="pull-left">
+					<%= link_to "Admin", admin_path, class: "btn btn-default" %>
+					</div>
+				<% end %>
                 <div class="pull-right">
                   <%= link_to "Log Out", logout_path, class: "btn btn-default" %>
                 </div>
