@@ -5,4 +5,7 @@ class HomeController < ApplicationController
   # GET /home/admin
   def admin
   end
+  
+  def profile
+  end
 end

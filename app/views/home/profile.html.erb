@@ -1,0 +1,12 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Manage Profile</h1>
+
+<% if current_user %>
+	<div>
+		<%= render 'users/form', user: current_user %>
+	</div>
+<% else %>
+	You are not logged in. Please go to <%= link_to "Log In", login_path %>.
+<% end %>
+<p><%= link_to 'Back', sites_path, class: "btn btn-default" %></p>

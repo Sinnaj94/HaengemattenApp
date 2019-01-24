@@ -24,4 +24,5 @@ Rails.application.routes.draw do
   get 'logout', to: 'sessions#destroy', as: 'logout'
   
   get 'admin', to: 'home#admin', as: 'admin'
+  get 'profile', to: 'home#profile', as: 'profile'
 end
