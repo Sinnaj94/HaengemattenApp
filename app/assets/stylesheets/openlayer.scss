@@ -16,11 +16,21 @@
     }
   }
   .ol-zoom {
-		right: 30px;
+		right: 1.5em;
 		left: auto;
 		top: auto;
-		bottom: 30px;
+		bottom: 1.5em;
 	}
+	.ol-control button {
+		height: 2em;
+		width: 1.5em;
+		background-color: rgba(39, 31, 48, 0.6);
+	}
+	.ol-control button:hover {
+		text-decoration: none;
+		background-color: rgba(63, 46, 32, 0.93);
+	}
+	
   .ol {
     &-popup {
       position: absolute;

@@ -5,7 +5,9 @@
  *= require AdminLTE
  *= require skins/skin-green-light
  *= require ol
+ *= require colors
  *= require sites
+ *= require openlayer
  *
  * bootstrap must come at the end
  *= require style
