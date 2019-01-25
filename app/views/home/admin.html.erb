@@ -16,7 +16,7 @@
 		<%#= link_to 'New User', new_user_path, class: 'btn btn-primary' if can? :create, User %>
 		<%= link_to 'Manage Users', users_path, class: 'btn btn-primary' if can? :index, User %>
 		<%= link_to 'Manage Reviews', reviews_path, class: 'btn btn-primary' if can? :index, Review %>
-		<%#= link_to 'Manage Sites', sites_path, class: 'btn btn-primary' if can? :index, Site %>
+		<%= link_to 'Manage Sites', list_sites_path, class: 'btn btn-primary' if can? :list, Site %>
 	</p>
 	<% end %>
 <% else %>

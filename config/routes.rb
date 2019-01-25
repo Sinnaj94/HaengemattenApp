@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   root 'home#index'
 
   resources :sizes
+  get 'sites/list', to: 'sites#list', as: 'list_sites'
   resources :sites
   resources :reviews
   resources :users do

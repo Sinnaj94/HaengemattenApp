@@ -45,7 +45,7 @@ class Ability
 
     else
       # p 'registered user'
-      can [:read, :index, :show, :create], [User, Site, Review]
+      can [:read, :index, :show, :create, :list], [User, Site, Review]
       can [:update, :destroy], [User], :id => user.id
       can [:update, :destroy], [Site, Review], :user_id => user.id
     end

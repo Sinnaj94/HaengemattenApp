@@ -2,6 +2,11 @@ class SitesController < ApplicationController
   load_and_authorize_resource
   before_action :set_site, only: [:show, :edit, :update, :destroy]
 
+  # GET /sites/list
+  def list
+	@sites = Site.joins(:sizes).includes([:sizes, :reviews])
+  end
+  
   # GET /sites
   # GET /sites.json
   def index
