@@ -15,7 +15,7 @@
     <div class="wrapper">
         <%= render 'layouts/navigation/header'%>
 		<%= content_for?(:sidebar) ? yield(:sidebar) : "" %>
-        <div class="content-wrapper">
+        <div class="<%= content_for?(:wrapperclass) ? yield(:wrapperclass) : "content-wrapper" %>">
             <%= yield %>
         </div>
         <%= render 'layouts/navigation/footer' %>
